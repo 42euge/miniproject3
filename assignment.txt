@@ -1,0 +1,59 @@
+Mini Project 3 — Agentic AI in FinTech
+Mid project checkin doc: Due: 7th March 2026 
+Final project submission: Due: 14th March 2026 
+
+In this project, you'll build AI agents that work with real financial data — live stock prices, fundamentals, and news sentiment. You'll compare architectures and evaluate them automatically using an LLM-as-judge.
+
+The implementation is intentionally open-ended. The single-agent and multi-agent systems have no skeleton code — just guidance. How you design them is part of the assignment.
+
+What to submit
+1. `mp3_assignment.ipynb` — completed notebook with all cells run
+All three architectures implemented, evaluator working, all five reflection questions answered with question IDs and scores cited from your results.
+
+2. `results_gpt4o_mini.xlsx` — full evaluation run with gpt-4o-mini
+
+3. `results_gpt4o.xlsx` — full evaluation run with gpt-4o
+
+4. `app.py` — your Streamlit deployment (see requirements below)
+
+5. `mp3_deployment.pdf` or `mp3_deployment.docx` — screenshot document (see below)
+
+Streamlit App Requirements
+Build a Streamlit chat interface that wraps the agents you built in the notebook. The app must:
+
+Sidebar controls
+- Agent selector: Single Agent / Multi-Agent
+- Model selector: gpt-4o-mini / gpt-4o
+
+Chat interface
+- Display the full conversation history (user messages + agent responses)
+- Each response should show which agent architecture and model was used
+- A "Clear conversation" button to reset the chat
+
+Conversational memory — this is the core requirement
+The app must maintain context across turns and correctly handle follow-up questions up to 3 exchanges deep. For example:
+
+> Q1: What is NVIDIA's P/E ratio?
+> Q2: How does that compare to AMD?
+> Q3: Which of the two has better news sentiment right now?
+
+Each follow-up must resolve correctly without the user having to repeat the context. The conversation history must be passed to the agent on every turn.
+
+What counts as a correct follow-up the agent understands what "that", "the two", "it", or any pronoun/reference from a prior message refers to, and retrieves accurate data to answer.
+
+Screenshot Document
+
+A short PDF or Word document (no length requirement) with screenshots showing:
+1. The sidebar with agent and model selectors visible
+2. A full 3-turn conversation where each follow-up is correctly resolved
+3. At least one example with each architecture (single agent + multi-agent)
+
+Label each screenshot with which agent and model was used.
+
+The Streamlit app and screenshot document are required for submission but evaluated as part of the multi-agent and reflection scores — a working deployment demonstrates that your architecture generalises beyond the benchmark.
+
+Tips
+- Build the Streamlit app after the notebook is working — `app.py` just imports and calls the same functions
+- `st.session_state` is how Streamlit persists conversation history between interactions
+- Test your follow-up handling on a cross-domain question chain before submitting — these are harder to get right than single-turn questions
+- Deploy locally with `streamlit run app.py` — no cloud hosting required, screenshots of local deployment are fine

@@ -1,0 +1,26 @@
+This one's genuinely fun — you're hitting real financial APIs, pulling live stock data, and building AI agents that actually do stuff. The multi-agent architecture is yours to design, no prescribed solution.
+
+It's a step up from MP2 but very doable if you start early and read the README first.
+
+What's in the release:
+ mp3_assignment.ipynb
+ results_template.xlsx
+ README.md
+
+Submission 1 — Mid-Project Check-in
+🗓️ Due: March 7th
+→ Baseline + single agent implemented and running
+→ Reflection questions Q0 and Q1 answered
+→ Written design plan for your multi-agent system (no code yet)
+
+Submission 2 — Final
+🗓️ Due: March 14th
+The full package:
+→ Completed notebook (all 3 architectures + evaluator + all reflections)
+→ Both Excel result files (gpt-4o-mini + gpt-4o)
+→ A Streamlit app that lets you chat with your agents — pick single or multi-agent, pick the model, and it handles follow-up questions
+→ A short doc with screenshots of the deployment
+
+The Streamlit part is new — it needs to hold a conversation and correctly answer follow-up questions (up to 3 deep). More details in the Canvas description.
+
+The evaluation runs take 30–45 min each so don't leave them to the last day
