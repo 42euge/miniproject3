@@ -1,0 +1,612 @@
+[
+  {
+    "id": "Q01",
+    "complexity": "easy",
+    "category": "sector_lookup",
+    "question": "List all semiconductor companies in the database.",
+    "eugenio": {
+      "answer": "The semiconductor companies in the database are:\n\n1. **NVIDIA Corporation** (Ticker: NVDA)\n2. **Broadcom Inc.** (Ticker: AVGO)\n3. **Advanced Micro Devices, Inc.** (Ticker: AMD)\n4. **Texas Instruments Incorporated** (Ticker: TXN)\n5. **QUALCOMM Incorporated** (Ticker: QCOM)\n6. **Applied Materials, Inc.** (Ticker: AMAT, Industry: Semiconductor Equipment & Materials)\n7. **Analog Devices, Inc.** (Ticker: ADI)\n8. **Micron Technology, Inc.** (Ticker: MU)\n9. **Lam Research Corporation** (Ticker: LRCX, Industry: Semiconductor Equipment & Materials)\n10. **Intel Corporation** (Ticker: INTC)\n11. **KLA Corporation** (Ticker: KLAC, Industry: Semiconductor Equipment & Materials)\n12. **NXP Semiconductors N.V.** (Ticker: NXPI)\n13. **Microchip Technology Incorporated** (Ticker: MCHP)\n14. **Monolithic Power Systems, Inc.** (Ticker: MPWR)\n15. **ON Semiconductor Corporation** (Ticker: ON)\n16. **Teradyne, Inc.** (Ticker: TER, Industry: Semiconductor Equipment & Materials)\n17. **Skyworks Solutions, Inc.** (Ticker: SWKS)\n18. **Qorvo, Inc.** (Ticker: QRVO)\n\nAll information provided is verified and complete with no noted issues.",
+      "time": 13.27,
+      "tools": [
+        "get_tickers_by_sector"
+      ],
+      "agents": [
+        "FundamentalsAgent"
+      ],
+      "score_by_eugenio_eval": 2,
+      "score_by_oguz_eval": 3,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent answer includes many correct semiconductor companies and tickers but includes some companies that are categorized under semiconductor equipment, which is a minor inaccuracy based on the expected answer's focus.",
+      "reasoning_oguz_eval": "The agent provided a comprehensive list of semiconductor companies with their corresponding tickers, matching the expected format and including additional relevant companies."
+    },
+    "oguz": {
+      "answer": "The tickers for all semiconductor companies in the database are:\n1. NVDA - NVIDIA Corporation\n2. AVGO - Broadcom Inc.\n3. AMD - Advanced Micro Devices, Inc.\n4. TXN - Texas Instruments Incorporated\n5. QCOM - QUALCOMM Incorporated\n6. AMAT - Applied Materials, Inc.\n7. ADI - Analog Devices, Inc.\n8. MU - Micron Technology, Inc.\n9. LRCX - Lam Research Corporation\n10. INTC - Intel Corporation\n11. KLAC - KLA Corporation\n12. NXPI - NXP Semiconductors N.V.\n13. MCHP - Microchip Technology Incorporat\n14. MPWR - Monolithic Power Systems, Inc.\n15. ON - ON Semiconductor Corporation\n16. TER - Teradyne, Inc.\n17. SWKS - Skyworks Solutions, Inc.\n18. QRVO - Qorvo, Inc.",
+      "time": 8.82,
+      "tools": [
+        "get_tickers_by_sector"
+      ],
+      "agents": [
+        "Price Agent"
+      ],
+      "score_by_eugenio_eval": 2,
+      "score_by_oguz_eval": 3,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The response includes many correct semiconductor companies and their tickers but also includes some that are not listed in the expected answer, which reduces its accuracy slightly.",
+      "reasoning_oguz_eval": "The agent provided a complete and accurate list of semiconductor companies with their corresponding tickers, matching the expected format."
+    }
+  },
+  {
+    "id": "Q02",
+    "complexity": "easy",
+    "category": "market_status",
+    "question": "Are the US stock markets open right now?",
+    "eugenio": {
+      "answer": "The US stock markets are currently closed. Regular trading hours are from 9:30 AM to 4:15 PM ET.",
+      "time": 4.74,
+      "tools": [
+        "get_market_status"
+      ],
+      "agents": [
+        "MarketAgent"
+      ],
+      "score_by_eugenio_eval": 2,
+      "score_by_oguz_eval": 2,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent correctly identified that the markets are closed and provided trading hours, but did not specify the status of NASDAQ separately as requested.",
+      "reasoning_oguz_eval": "The answer provides the closed status and trading hours, but does not specify the current time to confirm the status."
+    },
+    "oguz": {
+      "answer": "The current status of the US stock markets is closed. The markets are equity markets located in the United States, with primary exchanges including NASDAQ, NYSE, AMEX, and BATS. They typically open at 09:30 AM and close at 04:15 PM local time.",
+      "time": 5.57,
+      "tools": [
+        "get_market_status"
+      ],
+      "agents": [
+        "Price Agent"
+      ],
+      "score_by_eugenio_eval": 2,
+      "score_by_oguz_eval": 2,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The answer provides the status of the US stock markets, but does not specify if the NYSE and NASDAQ are currently open or closed, and it lacks the exact current status which is needed for full correctness.",
+      "reasoning_oguz_eval": "The answer provides the closed status and trading hours, but does not specify the current time to confirm the status."
+    }
+  },
+  {
+    "id": "Q03",
+    "complexity": "easy",
+    "category": "fundamentals",
+    "question": "What is the P/E ratio of Apple (AAPL)?",
+    "eugenio": {
+      "answer": "The P/E ratio of Apple Inc. (AAPL) is 31.66.",
+      "time": 4.2,
+      "tools": [
+        "get_company_overview"
+      ],
+      "agents": [
+        "FundamentalsAgent"
+      ],
+      "score_by_eugenio_eval": 3,
+      "score_by_oguz_eval": 3,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent provided the correct P/E ratio for Apple (AAPL) as a single numeric value, which meets the expected response criteria.",
+      "reasoning_oguz_eval": "The agent provided a specific numeric value for the P/E ratio of Apple (AAPL) that matches the expected format."
+    },
+    "oguz": {
+      "answer": "P/E ratio: 31.66",
+      "time": 4.3,
+      "tools": [
+        "get_company_overview"
+      ],
+      "agents": [
+        "Fundamentals Agent"
+      ],
+      "score_by_eugenio_eval": 3,
+      "score_by_oguz_eval": 3,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent provided the correct P/E ratio for Apple as a numeric value, meeting the expectations perfectly.",
+      "reasoning_oguz_eval": "The agent provided a specific numeric value for the P/E ratio of Apple, which matches the expected format and indicates a successful tool call."
+    }
+  },
+  {
+    "id": "Q04",
+    "complexity": "easy",
+    "category": "sentiment",
+    "question": "What is the latest news sentiment for Microsoft (MSFT)?",
+    "eugenio": {
+      "answer": "The latest news sentiment for Microsoft (MSFT) is generally **Bullish**. A variety of recent headlines reflect a positive outlook, with multiple articles highlighting developments in related sectors that contribute to a favorable market perception. Specific sentiments from various articles include somewhat bullish perspectives and some neutral commentary that does not detract significantly from the overall positive sentiment. No issues were flagged by the source, indicating a high confidence in this assessment.",
+      "time": 8.97,
+      "tools": [
+        "get_news_sentiment"
+      ],
+      "agents": [
+        "NewsAgent"
+      ],
+      "score_by_eugenio_eval": 1,
+      "score_by_oguz_eval": 1,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent answer mentions a general sentiment but fails to provide specific headlines or sentiment scores as required by the expected answer.",
+      "reasoning_oguz_eval": "The answer provides a general sentiment but lacks specific headlines and scores as required."
+    },
+    "oguz": {
+      "answer": "The latest news sentiment for Microsoft (MSFT) is Neutral with a sentiment score of 0.0. However, the sentiment score provided may not accurately reflect the varied sentiments present in related articles, which indicated mixed signals. The confidence in this assessment is 0.85.",
+      "time": 5.77,
+      "tools": [
+        "get_news_sentiment"
+      ],
+      "agents": [
+        "Sentiment Agent"
+      ],
+      "score_by_eugenio_eval": 1,
+      "score_by_oguz_eval": 1,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The answer provides a sentiment score but fails to include the required 3-5 recent headlines with their respective sentiment labels, leading to a partial but incomplete response.",
+      "reasoning_oguz_eval": "The answer provides a sentiment score but lacks specific recent headlines and their corresponding labels, indicating incomplete information."
+    }
+  },
+  {
+    "id": "Q05",
+    "complexity": "easy",
+    "category": "price",
+    "question": "What is NVIDIA's stock price performance over the last month?",
+    "eugenio": {
+      "answer": "NVIDIA's stock price has declined by 2.55% over the last month, starting at $184.96 and ending at $180.25.",
+      "time": 4.81,
+      "tools": [
+        "get_price_performance"
+      ],
+      "agents": [
+        "MarketAgent"
+      ],
+      "score_by_eugenio_eval": 3,
+      "score_by_oguz_eval": 3,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent answer includes NVDA start price, end price, and the percentage change, satisfying all aspects of the expected answer.",
+      "reasoning_oguz_eval": "The agent provided specific numeric values for the start price, end price, and percentage change, matching the expected format."
+    },
+    "oguz": {
+      "answer": "There was an error fetching the 1-month performance for NVIDIA (NVDA). Please try again later or check another ticker.",
+      "time": 4.91,
+      "tools": [
+        "get_price_performance"
+      ],
+      "agents": [
+        "Price Agent"
+      ],
+      "score_by_eugenio_eval": 0,
+      "score_by_oguz_eval": 0,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent's response does not provide any of the requested information about NVIDIA's stock price performance, resulting in no relevant content being addressed.",
+      "reasoning_oguz_eval": "The agent refused to provide any data and did not attempt to answer the question."
+    }
+  },
+  {
+    "id": "Q06",
+    "complexity": "medium",
+    "category": "price_comparison",
+    "question": "Compare the 1-year price performance of AAPL, MSFT, and GOOGL. Which grew the most?",
+    "eugenio": {
+      "answer": "GOOGL (Alphabet Inc.) grew the most over the past year, with a percentage change of **83.29%**. \n\nFor comparison:\n- AAPL (Apple Inc.) increased by **17.67%**.\n- MSFT (Microsoft Corp.) saw a rise of **2.58%**. \n\nThese figures clearly indicate that GOOGL had the most significant price performance growth among the three companies.",
+      "time": 8.1,
+      "tools": [
+        "get_price_performance"
+      ],
+      "agents": [
+        "MarketAgent"
+      ],
+      "score_by_eugenio_eval": 3,
+      "score_by_oguz_eval": 3,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent answer provides the 1-year price performance percentages for AAPL, MSFT, and GOOGL and correctly identifies GOOGL as the highest performer, fully satisfying the expected answer requirements.",
+      "reasoning_oguz_eval": "The agent provided specific percentage changes for all three tickers and correctly identified GOOGL as the highest performer."
+    },
+    "oguz": {
+      "answer": "AAPL: +17.67% | P/E N/A | Sentiment: Label N/A (score N/A)  \nMSFT: +2.58% | P/E N/A | Sentiment: Label N/A (score N/A)  \nGOOGL: +83.29% | P/E N/A | Sentiment: Label N/A (score N/A)  ",
+      "time": 6.04,
+      "tools": [
+        "get_price_performance"
+      ],
+      "agents": [
+        "Price Agent"
+      ],
+      "score_by_eugenio_eval": 2,
+      "score_by_oguz_eval": 2,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent provided the 1-year performance percentages for each company correctly and identified GOOGL as the highest performer, but it included unnecessary P/E and sentiment data that were not asked for.",
+      "reasoning_oguz_eval": "The answer provides the 1-year price performance for AAPL, MSFT, and GOOGL, but lacks the identification of the highest performer and includes irrelevant P/E and sentiment information."
+    }
+  },
+  {
+    "id": "Q07",
+    "complexity": "medium",
+    "category": "fundamentals",
+    "question": "Compare the P/E ratios of AAPL, MSFT, and NVDA. Which looks most expensive?",
+    "eugenio": {
+      "answer": "NVIDIA Corporation (NVDA) looks the most expensive based on its P/E ratio of 36.79. Here is the comparison of the P/E ratios for all three companies:\n\n- **NVIDIA (NVDA)**: 36.79\n- **Apple Inc (AAPL)**: 31.66\n- **Microsoft Corporation (MSFT)**: 24.75\n\nNVIDIA has the highest P/E ratio, making it the most expensive of the three, followed by Apple, and then Microsoft, which has the lowest P/E ratio.",
+      "time": 7.06,
+      "tools": [
+        "get_company_overview",
+        "get_company_overview",
+        "get_company_overview"
+      ],
+      "agents": [
+        "FundamentalsAgent"
+      ],
+      "score_by_eugenio_eval": 3,
+      "score_by_oguz_eval": 3,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent answer correctly provides the P/E ratios for all three companies and accurately identifies NVIDIA as the one with the highest P/E ratio, fulfilling the requirements of the expected answer.",
+      "reasoning_oguz_eval": "The answer provides specific P/E ratios for all three companies and correctly identifies NVIDIA as the most expensive based on its P/E ratio."
+    },
+    "oguz": {
+      "answer": "AAPL: P/E 31.66  \nMSFT: P/E 24.75  \nNVDA: P/E 36.79  \nMost Expensive: NVDA with a P/E ratio of 36.79.",
+      "time": 6.77,
+      "tools": [
+        "get_company_overview",
+        "get_company_overview",
+        "get_company_overview"
+      ],
+      "agents": [
+        "Fundamentals Agent"
+      ],
+      "score_by_eugenio_eval": 3,
+      "score_by_oguz_eval": 3,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent correctly provided the P/E ratios for AAPL, MSFT, and NVDA, and accurately identified NVDA as the most expensive based on its P/E ratio.",
+      "reasoning_oguz_eval": "The agent provided specific P/E ratios for all three companies and correctly identified NVDA as the most expensive based on its P/E ratio."
+    }
+  },
+  {
+    "id": "Q08",
+    "complexity": "medium",
+    "category": "sector_price",
+    "question": "Which energy stocks in the database had the best 6-month performance?",
+    "eugenio": {
+      "answer": "The energy stock with the best 6-month performance is **ExxonMobil (XOM)**, which increased by **41.11%**. Other notable performances include **Chevron (CVX)** with a **27.75%** increase, **SLB (SLB)** at **30.40%**, **BP (BP)** rising **28.10%**, and **TotalEnergies (TOT)** showing a minimal change of **0.48%**.",
+      "time": 8.4,
+      "tools": [
+        "get_price_performance"
+      ],
+      "agents": [
+        "MarketAgent"
+      ],
+      "score_by_eugenio_eval": 2,
+      "score_by_oguz_eval": 2,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent provided a ranked list of energy stocks with their 6-month performance, but it included some inaccuracies in the ranking order.",
+      "reasoning_oguz_eval": "The answer provides specific performance data for several energy stocks, but the ranking is not in the correct order based on the percentage change."
+    },
+    "oguz": {
+      "answer": "TPL: +73.05% | P/E N/A | Sentiment: N/A (N/A)  \nTRGP: +48.69% | P/E N/A | Sentiment: N/A (N/A)  \nVLO: +48.16% | P/E N/A | Sentiment: N/A (N/A)  ",
+      "time": 9.01,
+      "tools": [
+        "get_tickers_by_sector",
+        "get_price_performance"
+      ],
+      "agents": [
+        "Price Agent"
+      ],
+      "score_by_eugenio_eval": 2,
+      "score_by_oguz_eval": 2,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent provided some energy stocks with their 6-month performance percentages, but the answer lacks a complete ranking and additional context regarding querying the database and filtering specifically for energy sector tickers.",
+      "reasoning_oguz_eval": "The agent provided specific performance data for energy stocks, but did not include all required details such as P/E ratios or sentiment analysis, which were marked as N/A."
+    }
+  },
+  {
+    "id": "Q09",
+    "complexity": "medium",
+    "category": "sentiment",
+    "question": "What is the news sentiment for Tesla (TSLA) and how has its stock moved this month?",
+    "eugenio": {
+      "answer": "The news sentiment for Tesla (TSLA) is mostly positive, leaning towards **Bullish**. This sentiment is supported by recent headlines, particularly regarding Elon Musk's announcement of a \"gigantic\" chip fab project, which is viewed as a promising development for the company.\n\nIn terms of stock performance, Tesla's stock has decreased by **4.73%** this month, starting at **$410.63** and ending at **$391.20**. \n\nOverall, while the stock price has decreased, the prevailing news sentiment remains optimistic.",
+      "time": 8.67,
+      "tools": [
+        "get_price_performance",
+        "get_news_sentiment"
+      ],
+      "agents": [
+        "MarketAgent",
+        "NewsAgent"
+      ],
+      "score_by_eugenio_eval": 3,
+      "score_by_oguz_eval": 2,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent provided a clear sentiment label with a corresponding interpretation and also included accurate data on the stock price movement for the month, satisfying all aspects of the expected answer.",
+      "reasoning_oguz_eval": "The answer provides a sentiment label and score but lacks a specific numeric sentiment score, and while it includes a precise percentage change for the stock, it does not clearly separate the two tool call results as expected."
+    },
+    "oguz": {
+      "answer": "The specialist answers indicate that there is no performance data available for Tesla (TSLA) at this time. However, the sentiment analysis reveals the following headlines with their respective labels and scores:\n\n1. Musk says Tesla's 'gigantic' chip fab project to launch in seven days - Sentiment: Somewhat-Bullish (0.180947)\n2. How to view Tesla's Cybercab during SXSW - Sentiment: Neutral (0.122294)\n3. ATMP SEC Filings - Barclays ETN+ Select MLP 10-K, 10-Q, 8-K Forms - Sentiment: Neutral (0.075521)\n4. Is XPeng (NYSE:XPEV) Pricing Reflect Long Term Value After Recent Share Rebound - Sentiment: Neutral (-0.052237)\n5. XPeng Inc Stock (ISIN: KYG970081173) Faces Headwinds Amid China EV Slowdown - Sentiment: Somewhat-Bearish (-0.278235)\n\nThe overall sentiment for TSLA is Neutral with mixed scores, primarily driven by one somewhat-bullish piece and one somewhat-bearish article.",
+      "time": 13.35,
+      "tools": [
+        "get_price_performance",
+        "get_news_sentiment"
+      ],
+      "agents": [
+        "Price Agent",
+        "Sentiment Agent"
+      ],
+      "score_by_eugenio_eval": 2,
+      "score_by_oguz_eval": 1,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent provided the news sentiment for Tesla with relevant labels and scores, but failed to include the specific 1-month price percentage change, resulting in a minor omission.",
+      "reasoning_oguz_eval": "The answer provides sentiment analysis for Tesla but fails to include the required 1-month price percentage change, indicating incomplete data."
+    }
+  },
+  {
+    "id": "Q10",
+    "complexity": "medium",
+    "category": "fundamentals",
+    "question": "What are the 52-week high and low for JPMorgan (JPM) and Goldman Sachs (GS)?",
+    "eugenio": {
+      "answer": "The 52-week high and low for JPMorgan Chase & Co. (JPM) and Goldman Sachs Group Inc. (GS) are as follows:\n\n- **JPMorgan Chase & Co. (JPM)**\n  - 52-week high: $335.87\n  - 52-week low: $199.32\n\n- **Goldman Sachs Group Inc. (GS)**\n  - 52-week high: $979.54\n  - 52-week low: $430.46 \n\nThese figures are from a highly confident source with no noted issues.",
+      "time": 6.65,
+      "tools": [
+        "get_company_overview",
+        "get_company_overview"
+      ],
+      "agents": [
+        "FundamentalsAgent"
+      ],
+      "score_by_eugenio_eval": 2,
+      "score_by_oguz_eval": 1,
+      "halluc_eugenio_eval": true,
+      "halluc_oguz_eval": true,
+      "reasoning_eugenio_eval": "The answer provides specific 52-week highs and lows for both stocks but significantly overstates the values for Goldman Sachs, indicating a minor inaccuracy.",
+      "reasoning_oguz_eval": "The answer provides specific numeric values but contains inaccuracies in the data for Goldman Sachs, indicating potential fabrication."
+    },
+    "oguz": {
+      "answer": "The 52-week high and low for JPMorgan (JPM) are 335.87 and 199.32, respectively. For Goldman Sachs (GS), the 52-week high is 979.54 and the low is 430.46.",
+      "time": 6.1,
+      "tools": [
+        "get_company_overview",
+        "get_company_overview"
+      ],
+      "agents": [
+        "Fundamentals Agent"
+      ],
+      "score_by_eugenio_eval": 2,
+      "score_by_oguz_eval": 1,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": true,
+      "reasoning_eugenio_eval": "The agent provided specific 52-week high and low figures for both JPM and GS but did not clarify that the numbers were fetched from Alpha Vantage as specified in the expected answer.",
+      "reasoning_oguz_eval": "The answer provides specific numeric values, but the figures for Goldman Sachs appear to be fabricated or incorrect."
+    }
+  },
+  {
+    "id": "Q11",
+    "complexity": "hard",
+    "category": "multi_condition",
+    "question": "Which tech stocks dropped this month but grew this year? Return the top 3.",
+    "eugenio": {
+      "answer": "The top 3 tech stocks that dropped this month but have shown growth this year are:\n\n1. **Meta Platforms, Inc. (FB)**\n   - Price Change (1 month): -0.20%\n   - Price Change (YTD): +0.06%\n\nThere were only conflicts in the data regarding the performance of AAPL and GOOGL. MarketAgent noted that AAPL dropped both this month and YTD, while GOOGL is also down this month but has seen a YTD decline. Therefore, based on the criteria you provided and the information from the MarketAgent, FB is the only stock that fits the criteria of declining this month while exhibiting slight growth this year.",
+      "time": 9.93,
+      "tools": [
+        "get_price_performance",
+        "get_price_performance"
+      ],
+      "agents": [
+        "MarketAgent"
+      ],
+      "score_by_eugenio_eval": 1,
+      "score_by_oguz_eval": 1,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The answer mentions one stock that dropped this month and grew this year, but it fails to provide the top 3 as requested and includes inaccuracies about the other stocks.",
+      "reasoning_oguz_eval": "The answer provides one stock that meets the criteria, but it fails to return the top 3 and includes inaccuracies regarding the performance of AAPL and GOOGL."
+    },
+    "oguz": {
+      "answer": "The top 3 tech stocks that dropped this month but grew this year are:\n\n1. MU: start=$315.42, end=$426.13, change=+35.10%\n2. AMAT: start=$268.54, end=$341.53, change=+27.18%\n3. GLW: start=$90.50, end=$129.12, change=+42.67%\n\nNote: GLW's inclusion is based on the agent's response, but its performance data was not present in the price returns provided.",
+      "time": 23.48,
+      "tools": [
+        "get_tickers_by_sector",
+        "get_price_performance",
+        "get_price_performance"
+      ],
+      "agents": [
+        "Price Agent"
+      ],
+      "score_by_eugenio_eval": 2,
+      "score_by_oguz_eval": 1,
+      "halluc_eugenio_eval": true,
+      "halluc_oguz_eval": true,
+      "reasoning_eugenio_eval": "The agent's answer identifies three tech stocks that dropped this month but grew this year, but it includes a potential inaccuracy regarding GLW's performance data, which could indicate an omission or slight inaccuracy.",
+      "reasoning_oguz_eval": "The answer includes specific tickers and percentages, but there is a clear fabrication signal regarding GLW's performance data, which was not provided."
+    }
+  },
+  {
+    "id": "Q12",
+    "complexity": "hard",
+    "category": "multi_condition",
+    "question": "Which large-cap technology stocks on NASDAQ have grown more than 20% this year?",
+    "eugenio": {
+      "answer": "No large-cap technology stocks on NASDAQ have grown more than 20% this year. The highest performer, Intel Corporation (INTC), showed a growth rate of +16.23%, which is still below the specified threshold. Other major stocks, including Apple (AAPL), Microsoft (MSFT), and NVIDIA (NVDA), all reported negative growth for the year-to-date.",
+      "time": 9.12,
+      "tools": [
+        "get_price_performance"
+      ],
+      "agents": [
+        "MarketAgent"
+      ],
+      "score_by_eugenio_eval": 1,
+      "score_by_oguz_eval": 0,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "While the agent provided specific performance data for a notable stock and mentioned that there are no stocks meeting the threshold, it didn't directly query a database or present a full list of stocks, which are key components of a complete answer.",
+      "reasoning_oguz_eval": "The agent provided a response that included specific data but failed to meet the user's request for stocks that have grown more than 20%, resulting in a complete failure to answer the question."
+    },
+    "oguz": {
+      "answer": "MU: start=$315.42 end=$426.13 +35.10%  \nWDC: start=$187.61 end=$272.29 +45.14%  \nTER: start=$207.47 end=$286.42 +38.05%  ",
+      "time": 15.57,
+      "tools": [
+        "get_tickers_by_sector",
+        "get_price_performance",
+        "get_price_performance",
+        "get_price_performance"
+      ],
+      "agents": [
+        "Price Agent"
+      ],
+      "score_by_eugenio_eval": 3,
+      "score_by_oguz_eval": 3,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent provided correct large-cap NASDAQ tech stocks with their exact percentage changes, fulfilling the expected criteria completely.",
+      "reasoning_oguz_eval": "The agent provided specific tickers with exact percentage growth values that match the expected format and criteria."
+    }
+  },
+  {
+    "id": "Q13",
+    "complexity": "hard",
+    "category": "cross_domain",
+    "question": "For the top 3 semiconductor stocks by 1-year return, what are their P/E ratios and current news sentiment?",
+    "eugenio": {
+      "answer": "The top 3 semiconductor stocks by 1-year return are:\n\n1. **TSMC (TSM)**\n   - **1-Year Return:** +96.95%\n   - **P/E Ratio:** 32.47\n   - **Current News Sentiment:** Bullish\n\n2. **AMD (AMD)**\n   - **1-Year Return:** +91.53%\n   - **P/E Ratio:** 74.10\n   - **Current News Sentiment:** Neutral\n\n3. **Intel (INTC)**\n   - **1-Year Return:** +90.31%\n   - **P/E Ratio:** Unavailable\n   - **Current News Sentiment:** Bullish\n\n### Summary of Sentiment:\n- **TSMC** shows strong bullish sentiment with positive headlines about share purchasing.\n- **AMD** has a neutral sentiment with mixed reports on investment positions.\n- **Intel** is experiencing a bullish sentiment supported by news of new product launches and market performance.",
+      "time": 17.98,
+      "tools": [
+        "get_price_performance",
+        "get_company_overview",
+        "get_company_overview",
+        "get_company_overview",
+        "get_company_overview",
+        "get_news_sentiment",
+        "get_news_sentiment",
+        "get_news_sentiment"
+      ],
+      "agents": [
+        "MarketAgent",
+        "FundamentalsAgent",
+        "NewsAgent"
+      ],
+      "score_by_eugenio_eval": 2,
+      "score_by_oguz_eval": 2,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent provided the correct stocks ranked by 1-year return and included P/E ratios and news sentiment for each, but there is a minor omission as the average covering of the sentiment details may not fully align with the comprehensive requirements for sentiment analysis.",
+      "reasoning_oguz_eval": "The answer provides specific data for two stocks, but the P/E ratio for Intel is marked as 'Unavailable', which is incomplete."
+    },
+    "oguz": {
+      "answer": "MU: +324.18% | P/E 40.47 | Sentiment: Bullish (0.307)  \nTER: +231.43% | P/E 82.54 | Sentiment: Bullish (0.423)  \nLRCX: +171.64% | P/E 43.48 | Sentiment: N/A",
+      "time": 14.95,
+      "tools": [
+        "get_tickers_by_sector",
+        "get_price_performance",
+        "get_company_overview",
+        "get_company_overview",
+        "get_company_overview",
+        "get_news_sentiment",
+        "get_news_sentiment",
+        "get_news_sentiment"
+      ],
+      "agents": [
+        "Price Agent",
+        "Fundamentals Agent",
+        "Sentiment Agent"
+      ],
+      "score_by_eugenio_eval": 2,
+      "score_by_oguz_eval": 2,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent provided relevant stock information but one stock's sentiment is missing, which affects the completeness of the answer.",
+      "reasoning_oguz_eval": "The answer provides P/E ratios and sentiment for the top 3 semiconductor stocks, but one sentiment is marked as N/A, indicating incomplete data."
+    }
+  },
+  {
+    "id": "Q14",
+    "complexity": "hard",
+    "category": "cross_domain",
+    "question": "Compare the market cap, P/E ratio, and 1-year stock performance of JPM, GS, and BAC.",
+    "eugenio": {
+      "answer": "**JPMorgan Chase & Co (JPM), Goldman Sachs Group Inc (GS), and Bank of America Corp (BAC) comparison:**\n\n- **Market Cap:**\n  - JPM: $764.45 billion\n  - GS: $234.61 billion\n  - BAC: $341.17 billion\n\n- **P/E Ratio:**\n  - JPM: 14.16\n  - GS: 15.24\n  - BAC: 12.26\n\n- **1-Year Stock Performance:**\n  - JPM: 24.44% increase\n  - GS: 47.47% increase (highest growth)\n  - BAC: 16.83% increase\n\nIn summary, Goldman Sachs led in stock performance with a 47.47% increase over the year, while JPMorgan had the highest market cap, and Bank of America had the lowest P/E ratio among the three.",
+      "time": 14.03,
+      "tools": [
+        "get_company_overview",
+        "get_company_overview",
+        "get_company_overview",
+        "get_price_performance"
+      ],
+      "agents": [
+        "FundamentalsAgent",
+        "MarketAgent"
+      ],
+      "score_by_eugenio_eval": 3,
+      "score_by_oguz_eval": 3,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent answer fully provides the requested market cap, P/E ratios, and 1-year stock performance for JPM, GS, and BAC without any inaccuracies or invented entities.",
+      "reasoning_oguz_eval": "The answer provides specific numeric values for market cap, P/E ratio, and 1-year stock performance for all three companies, matching the expected format."
+    },
+    "oguz": {
+      "answer": "JPM: +24.44% | P/E 14.16 | Sentiment: N/A  \nGS: +47.47% | P/E 15.24 | Sentiment: N/A  \nBAC: +16.83% | P/E 12.26 | Sentiment: N/A  ",
+      "time": 8.29,
+      "tools": [
+        "get_price_performance",
+        "get_company_overview",
+        "get_company_overview",
+        "get_company_overview"
+      ],
+      "agents": [
+        "Price Agent",
+        "Fundamentals Agent"
+      ],
+      "score_by_eugenio_eval": 2,
+      "score_by_oguz_eval": 2,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The answer provides the 1-year stock performance and P/E ratios for JPM, GS, and BAC but omits market cap information, making it mostly correct but incomplete.",
+      "reasoning_oguz_eval": "The answer provides P/E ratios and 1-year stock performance for all three tickers, but it lacks the market cap data which is a required component."
+    }
+  },
+  {
+    "id": "Q15",
+    "complexity": "hard",
+    "category": "multi_condition",
+    "question": "Which finance sector stocks are trading closer to their 52-week low than their 52-week high? Return the news sentiment for each.",
+    "eugenio": {
+      "answer": "There are currently no finance sector stocks trading closer to their 52-week low than their 52-week high, as there are no stocks listed in the Finance sector in the local database according to both the FundamentalsAgent and the NewsAgent. Therefore, there is no news sentiment available for any finance stocks.",
+      "time": 5.87,
+      "tools": [
+        "get_tickers_by_sector"
+      ],
+      "agents": [
+        "FundamentalsAgent",
+        "NewsAgent"
+      ],
+      "score_by_eugenio_eval": 0,
+      "score_by_oguz_eval": 0,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent's response does not address the requirements of the question and incorrectly states that there are no finance sector stocks without attempting to analyze or fetch data as instructed.",
+      "reasoning_oguz_eval": "The agent refused to provide any data and did not attempt to retrieve or compute the required information."
+    },
+    "oguz": {
+      "answer": "ERROR: Error code: 400 - {'error': {'message': \"Invalid 'messages[4].tool_calls': array too long. Expected an array with maximum length 128, but got an array with length 502 instead.\", 'type': 'invalid_request_error', 'param': 'messages[4].tool_calls', 'code': 'array_above_max_length'}}",
+      "time": 250.47,
+      "tools": [],
+      "agents": [],
+      "score_by_eugenio_eval": 0,
+      "score_by_oguz_eval": 0,
+      "halluc_eugenio_eval": false,
+      "halluc_oguz_eval": false,
+      "reasoning_eugenio_eval": "The agent's response indicates a technical error and does not provide any financial information related to the question asked, therefore it is considered incorrect.",
+      "reasoning_oguz_eval": "The agent's response indicates a failure to process the request due to an error code, and it does not provide any relevant data or insights."
+    }
+  }
+]

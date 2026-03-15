@@ -1,0 +1,48 @@
+
+================================================================================
+  SUMMARY — gpt-4o-mini
+================================================================================
+
+QID   Diff    Eug(E-eval)  Eug(O-eval)  Oguz(E-eval)  Oguz(O-eval)  E-time  O-time 
+-----------------------------------------------------------------------------------
+Q01   easy    2            3            2             3             13.27   8.82   
+Q02   easy    2            2            2             2             4.74    5.57   
+Q03   easy    3            3            3             3             4.2     4.3    
+Q04   easy    1            1            1             1             8.97    5.77   
+Q05   easy    3            3            0             0             4.81    4.91   
+Q06   medium  3            3            2             2             8.1     6.04   
+Q07   medium  3            3            3             3             7.06    6.77   
+Q08   medium  2            2            2             2             8.4     9.01   
+Q09   medium  3            2            2             1             8.67    13.35  
+Q10   medium  2            1            2             1             6.65    6.1    
+Q11   hard    1            1            2             1             9.93    23.48  
+Q12   hard    1            0            3             3             9.12    15.57  
+Q13   hard    2            2            2             2             17.98   14.95  
+Q14   hard    3            3            2             2             14.03   8.29   
+Q15   hard    0            0            0             0             5.87    250.47 
+
+────────────────────────────────────────────────────────────
+TIER AVERAGES (score /3)
+────────────────────────────────────────────────────────────
+
+  EASY (5 questions):
+    Eugenio MA:  Eugenio-eval=2.20  Oguz-eval=2.40  avg_time=7.2s
+    Oguz MA:     Eugenio-eval=1.60  Oguz-eval=1.80  avg_time=5.9s
+
+  MEDIUM (5 questions):
+    Eugenio MA:  Eugenio-eval=2.60  Oguz-eval=2.20  avg_time=7.8s
+    Oguz MA:     Eugenio-eval=2.20  Oguz-eval=1.80  avg_time=8.3s
+
+  HARD (5 questions):
+    Eugenio MA:  Eugenio-eval=1.40  Oguz-eval=1.20  avg_time=11.4s
+    Oguz MA:     Eugenio-eval=1.80  Oguz-eval=1.60  avg_time=62.6s
+
+────────────────────────────────────────────────────────────
+OVERALL
+────────────────────────────────────────────────────────────
+  Eugenio MA:  Eugenio-eval=2.07  Oguz-eval=1.93  avg_time=8.8s  halluc(E/O)=1/1
+  Oguz MA:     Eugenio-eval=1.87  Oguz-eval=1.73  avg_time=25.6s  halluc(E/O)=1/2
+
+  Evaluator agreement (exact score match): 22/30 (73%)
+
+  Head-to-head (avg of both evaluators): Eugenio wins=4  Oguz wins=2  Ties=9

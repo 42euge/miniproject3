@@ -477,6 +477,143 @@ adjustments for absolute paths (resolved via \texttt{\_\_file\_\_}), explicit
 defaults for clean Streamlit output.
 
 % -----------------------------------------------------------------------
+\section{Head-to-Head: Two Multi-Agent Architectures}
+% -----------------------------------------------------------------------
+
+To understand how architectural choices affect performance independent of the benchmark
+design, we ran a head-to-head comparison of the two team members' multi-agent
+implementations on the same 15 questions using \texttt{gpt-4o-mini}, cross-evaluated by
+both team members' LLM-as-a-Judge evaluators.
+
+\subsection{Architectural Differences}
+
+Table~\ref{tab:arch-diff} summarises the key design differences.
+
+\begin{table}[H]
+\centering
+\caption{Architectural comparison of the two multi-agent systems.}
+\label{tab:arch-diff}
+\begin{tabular}{p{2.2cm}p{2.8cm}p{2.8cm}}
+\toprule
+\textbf{Component} & \textbf{Eugenio (Adaptive Router-Verifier)} & \textbf{Oguz (Orchestrator-Critic)} \\
+\midrule
+Router output & domain flags + execution mode & agent list + phased flag + per-agent sub-tasks \\
+Specialists   & MarketAgent, FundamentalsAgent, NewsAgent & Price Agent, Fundamentals Agent, Sentiment Agent \\
+Verification  & Rule-based confidence scoring (no LLM) & LLM Critic checks answer vs.\ raw tool data \\
+Synthesis     & LLM Aggregator merges by confidence rank & LLM Synthesizer with TABLE/PROSE format rules \\
+Specialist prompts & Concise, 2--3 sentence role descriptions & Detailed protocols (scratchpad for ranking, multi-condition filtering) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The most significant design differences are: (1)~Oguz's specialist prompts include
+explicit step-by-step protocols for ranking and filtering, while Eugenio's rely on the
+model's general instruction-following; (2)~Oguz uses an LLM-based Critic that validates
+each specialist's answer against its raw tool output, while Eugenio uses a cheaper
+rule-based verifier; and (3)~Oguz's orchestrator writes focused sub-tasks per agent,
+while Eugenio's router only flags which domains are needed.
+
+\subsection{Evaluator Differences}
+
+Eugenio's evaluator uses a two-layer approach: a deterministic pre-check flags hedging
+language as hallucination (score~1) before the LLM judge runs, reducing false negatives
+on the most common fabrication pattern.  Oguz's evaluator is purely LLM-based but
+includes domain-specific guidance: precise decimals are treated as evidence of real tool
+calls even when paired with ``approximately,'' and live data values are never compared
+against training knowledge.
+
+\subsection{Head-to-Head Results}
+
+Table~\ref{tab:h2h} shows the per-question scores assigned by both evaluators.
+
+\begin{table}[H]
+\centering
+\caption{Head-to-head comparison (gpt-4o-mini).  Each cell shows the score out of~3
+assigned by the named evaluator to the named architecture.}
+\label{tab:h2h}
+\small
+\begin{tabular}{llcccc}
+\toprule
+ & & \multicolumn{2}{c}{\textbf{Eugenio MA}} & \multicolumn{2}{c}{\textbf{Oguz MA}} \\
+\cmidrule(lr){3-4} \cmidrule(lr){5-6}
+\textbf{QID} & \textbf{Tier} & \textbf{E-eval} & \textbf{O-eval} & \textbf{E-eval} & \textbf{O-eval} \\
+\midrule
+Q01 & easy   & 2 & 3 & 2 & 3 \\
+Q02 & easy   & 2 & 2 & 2 & 2 \\
+Q03 & easy   & 3 & 3 & 3 & 3 \\
+Q04 & easy   & 1 & 1 & 1 & 1 \\
+Q05 & easy   & 3 & 3 & 0 & 0 \\
+Q06 & medium & 3 & 3 & 2 & 2 \\
+Q07 & medium & 3 & 3 & 3 & 3 \\
+Q08 & medium & 2 & 2 & 2 & 2 \\
+Q09 & medium & 3 & 2 & 2 & 1 \\
+Q10 & medium & 2 & 1 & 2 & 1 \\
+Q11 & hard   & 1 & 1 & 2 & 1 \\
+Q12 & hard   & 1 & 0 & 3 & 3 \\
+Q13 & hard   & 2 & 2 & 2 & 2 \\
+Q14 & hard   & 3 & 3 & 2 & 2 \\
+Q15 & hard   & 0 & 0 & 0 & 0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Analysis}
+
+\paragraph{Overall scores}
+Averaging across both evaluators, Eugenio's architecture scored 2.00/3 (66.7\% accuracy)
+and Oguz's scored 1.80/3 (60.0\%).  On a per-question basis, Eugenio won 4 questions,
+Oguz won 2, and 9 were ties.  Both systems failed completely on Q15 (finance sector
+stocks near 52-week low), which requires chaining sector lookup, fundamentals retrieval,
+proximity computation, and sentiment -- the most complex question in the benchmark.
+
+\paragraph{Easy tier}
+Eugenio's system averaged 2.30/3 vs.\ Oguz's 1.70/3.  The gap is driven almost entirely
+by Q05 (NVDA 1-month performance): Oguz's synthesizer dropped the start and end prices
+from the final answer, reporting only the percentage change, which both evaluators scored
+as~0 for missing required fields.  This highlights a weakness of strict output format
+rules -- the TABLE/PROSE format in Oguz's synthesizer optimised for certain question
+patterns but penalised others.
+
+\paragraph{Hard tier}
+Oguz's system performed better on Q12 (large-cap NASDAQ tech stocks $>$20\% YTD), scoring
+3/3 vs.\ Eugenio's 0.5/3.  Oguz's detailed Price Agent prompt includes an explicit
+multi-condition filtering protocol that correctly handled the dual filter (market cap +
+exchange + YTD threshold).  Eugenio's MarketAgent lacked this protocol and returned
+incorrect results.  Conversely, Eugenio won Q14 (compare JPM, GS, BAC across 3 metrics)
+because the Adaptive Router correctly activated both MarketAgent and FundamentalsAgent
+in parallel, while Oguz's system produced a less complete synthesis.
+
+\paragraph{Prompt engineering matters more than architecture}
+The largest quality differences were driven not by the pipeline structure (both use
+router $\to$ specialists $\to$ verification $\to$ synthesis) but by prompt specificity.
+Oguz's Price Agent prompt with its ``scratchpad protocol'' and ``multi-condition filtering
+protocol'' produced measurably better results on ranking and filtering questions.
+Eugenio's simpler prompts worked well on straightforward queries but degraded on
+questions requiring precise multi-step reasoning within a single specialist.
+
+\paragraph{Verification trade-offs}
+Eugenio's rule-based verifier is fast (no LLM call) but shallow -- it checks \emph{whether}
+tools were called, not \emph{whether the answer matches the tool output}.  Oguz's LLM
+Critic cross-checks the answer against raw tool data, catching cases where a specialist
+calls the right tool but misreports the result.  However, the Critic adds latency:
+Oguz's system averaged 25.6s per question vs.\ Eugenio's 8.8s, with Q15 taking 250s
+due to the Critic evaluating large volumes of fundamentals data for many finance tickers.
+
+\paragraph{Evaluator agreement}
+The two evaluators agreed on the exact score for 73\% of answer evaluations (22/30).
+When they disagreed, Eugenio's evaluator tended to be slightly more generous (awarding
+score~2 where Oguz's gave~1), likely because Eugenio's rule-based pre-check only catches
+hedging-based hallucinations while Oguz's LLM evaluator also penalises incomplete answers
+more aggressively.
+
+\paragraph{Latency}
+Eugenio's system was 2.9$\times$ faster on average (8.8s vs.\ 25.6s).  The primary
+driver is the verification stage: Eugenio's rule-based verifier adds negligible time,
+while Oguz's LLM Critic requires one additional API call per specialist.  On Q15, Oguz's
+system took over 4 minutes because the Fundamentals Agent fetched overview data for
+dozens of finance-sector tickers, and the Critic then had to process all that raw data.
+
+% -----------------------------------------------------------------------
 \section{Conclusion}
 % -----------------------------------------------------------------------
 
@@ -487,11 +624,20 @@ a further 8-point improvement (83\% overall with gpt-4o-mini) by decomposing com
 cross-domain questions into specialist sub-tasks with evidence verification, though it
 adds latency and offers no benefit on simple single-domain queries.
 
+The head-to-head comparison of two independently developed multi-agent systems reveals
+that \textbf{prompt engineering within specialists matters more than pipeline structure}.
+Both systems use the same high-level pattern (router $\to$ specialists $\to$ verification
+$\to$ synthesis), yet per-question results diverge significantly based on how detailed
+the specialist prompts are.  Oguz's explicit ranking and filtering protocols improved
+hard-question accuracy, while Eugenio's simpler prompts and rule-based verifier delivered
+comparable results 3$\times$ faster.  The evaluator comparison showed 73\% agreement,
+with systematic differences in how each handles partial answers -- confirming that
+LLM-as-a-Judge reliability remains an open challenge for automated evaluation.
+
 Surprisingly, the larger gpt-4o model did not outperform gpt-4o-mini in our evaluation,
 suggesting that for structured tool-calling tasks, the smaller model is cost-effective.
-The primary architectural weakness is the router's dependency detection: when it fails
-to recognise a staged execution requirement, specialists lack the context they need,
-causing cascading failures on hard questions.  Future work could address this with a
-more explicit planning step that constructs a dependency graph before dispatching agents.
+The primary architectural weakness shared by both systems is the router's dependency
+detection: when it fails to recognise a staged execution requirement, specialists lack
+the context they need, causing cascading failures on hard questions.
 
 \end{document}
